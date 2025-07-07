@@ -1,0 +1,197 @@
+/*
+ * ATIVIDADE PRÁTICA - FUNDAMENTOS DA PROGRAMAÇÃO WEB
+ * CSS com Estilo Agradável e Animações 3D
+ * Autor: Leandro José De Almeida 
+ */
+
+/* Importando a fonte 'Poppins' do Google Fonts para um visual mais moderno */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* --- Variáveis de Cores (Tema Escuro) --- */
+/* Usar variáveis facilita a mudança de cores no futuro */
+:root {
+    --bg-color: #1a1a2e; /* Azul noturno escuro */
+    --primary-card-color: #16213e; /* Azul mais profundo para cards */
+    --accent-color: #00c8ff; /* Azul elétrico vibrante para destaques */
+    --text-color: #e0e0e0; /* Cinza claro para texto legível */
+    --header-color: #0f3460; /* Cor do cabeçalho */
+}
+
+/* --- Estilos Gerais e Animações --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    scroll-behavior: smooth; /* Rolagem suave ao clicar nos links internos */
+}
+
+/* Animação de fade-in para as seções aparecerem suavemente */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Cabeçalho e Navegação com Efeito 3D --- */
+header {
+    background: linear-gradient(90deg, var(--header-color), var(--bg-color));
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    /* Adicionando perspectiva para o efeito 3D funcionar nos itens filhos */
+    perspective: 500px;
+}
+
+nav ul li {
+    display: inline-block; /* Usar inline-block para aplicar transformações */
+    margin: 0 15px;
+    /* Transição suave para a animação */
+    transition: transform 0.4s ease;
+}
+
+/* Animação 3D ao passar o mouse */
+nav ul li:hover {
+    transform: rotateX(20deg) rotateY(-5deg) translateZ(20px);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 10px;
+    display: block;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+/* --- Estrutura Principal e Seções --- */
+main {
+    padding-top: 100px; /* Aumenta o espaço para o cabeçalho */
+}
+
+section {
+    padding: 60px 20px;
+    margin: 0 auto 40px auto;
+    max-width: 800px;
+    background-color: var(--primary-card-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    /* Aplicando a animação de fade-in */
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* --- Tipografia --- */
+h1, h2 {
+    color: white;
+    text-shadow: 0 0 5px var(--accent-color);
+}
+
+h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.2rem;
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+p, li {
+    line-height: 1.8; /* Melhora a legibilidade */
+    font-weight: 300;
+}
+
+/* --- Formulário de Contato Estilizado --- */
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 400;
+    color: var(--accent-color);
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+form input:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+form button {
+    background-color: var(--accent-color);
+    color: black;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animação no botão ao passar o mouse */
+form button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 200, 255, 0.4);
+}
+
+/* --- ESTILOS PARA OS ÍCONES DE CONTATO (ADICIONADO) --- */
+.social-links {
+    text-align: center;
+    padding: 10px 0 20px 0; /* Espaçamento acima e abaixo dos ícones */
+}
+
+.social-links a {
+    font-size: 2.5rem; /* Tamanho dos ícones */
+    color: var(--text-color); /* Usa a variável de cor do texto do tema */
+    margin: 0 15px; /* Espaçamento entre os ícones */
+    text-decoration: none;
+    display: inline-block; /* Necessário para a animação de transform */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color); /* Usa a variável de cor de destaque */
+    transform: translateY(-5px); /* Efeito de "levantar" o ícone */
+}
